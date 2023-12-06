@@ -16,7 +16,7 @@
             <!-- Navbar -->
             <div id="navbar" class="navbar-container">
               <div class="navbar-logo">
-                  <img id="logo" height="48" width="48" alt="" src="{% static "navbarico.svg" %}"></img>
+                  <img id="logo" height="48" width="48" alt="" src="{% static "Purdue_logo.svg" %}"></img>
                   Module
                </div>
               <div class="tabs">
@@ -34,7 +34,7 @@
 <!-- Login Container -->
 <div id="login-container">
   <div class="form-wrap login">
-    <h3><strong>Welcome!</strong></h3>
+    <h3><strong>Login or Register</strong></h3>
     <form id="form" method="post">
       {% csrf_token %}
       <span><input id="id_username" name="username" type="text" placeholder="Username"></span><br/>

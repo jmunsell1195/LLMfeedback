@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static "CSS/utility.css"%}">
+<link rel="stylesheet" href="{% static "CSS/style.css"%}"> 
+<link rel="stylesheet" href="{% static "CSS/instruction_styles.css"%}"> 
+<title>Ballistic Pendulum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% endblock %}
+
+{% block body %}
+            <!-- Navbar -->
+            <div id="navbar" class="navbar-container">
+                <div class="navbar-logo">
+                    <img id="logo" height="48" width="48" alt="" src="{% static "Purdue_logo.svg" %}"></img>
+                    Module
+                 </div>
+                <div class="tabs">
+                    <nav>
+                      <ul>
+                          <li><a id="Login" class="active" href="#">Login</a></li>
+                          <li><a id="Warm-Up" class="inactive" href="#">Warm-Up</a></li>
+                          <li><a id="Instruction" class="inactive" href="#">Instruction</a></li>
+                          <li><a id="Final" class="inactive" href="#">Final</a></li>        
+                      </ul>
+                    </nav>
+                </div>
+            </div>
+<div id="submission" class="problem-box">
+    <div>
+        <p class="prob-stmt"><strong>{{context.problem_statement}}</strong></p>
+    </div>
+    <div>
+        <table class="table table-hover dark">
+            <tr>
+                <th scope="col"><center>Criteria</center></th>
+                <th scope="col"><center>Score</center></th>
+                <th scope="col"><center>Description</center></th>
+            </tr>
+            
+            {% for k, v in context.rubric.items %}
+            <tr>
+                <td scope="col"><strong>{{k}}</strong></td>
+                <td scope="col">0 - 5 points</td>
+                <td scope="col">{{v}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <form id="essay-form" class="form-group" type="submit">
+            {%csrf_token%}
+            <label for="exampleFormControlTextarea1"><strong>Enter you essay here</strong></label>
+            <textarea id="student-essay" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button id="sub-btn" type="submit" class="btn btn-primary"><strong>Submit</strong></button>
+        </form>
+    </div>
+</div>
+
+<div id="response" class="problem-box">
+    <div>
+        <p class="prob-stmt"><strong>{{context.problem_statement}}</strong></p>
+    </div>
+</div>
+<div id="agent-response"></div>
+<div id="student-essay">
+
+</div>
+
+
+
+<script>
+    const studentEssay = document.getElementById("student-essay")
+    const essayForm = document.getElementById("essay-form")
+    const agentResponse = document.getElementById("agent-response")
+    const submission = document.getElementById("submission")
+    const response = document.getElementById("response")
+
+  
+    essayForm.addEventListener('submit',(e) => {
+      e.preventDefault()
+      submission.style.display = 'none'
+  
+      const essay = studentEssay.value.trim();
+      if (essay.length === 0) {
+        return;
+      }
+  
+    fetch('', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+        'essay': essay
+      })
+    })}).then(resp => resp.json())
+    .then(data => {
+      const response = data.output;
+      console.log(data)
+
+
+    })
+  
+  </script>
+
+{% endblock %}
