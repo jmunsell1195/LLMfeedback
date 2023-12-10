@@ -54,7 +54,7 @@
     <div>
         <form id="essay-form" class="form-group" type="submit">
             {%csrf_token%}
-            <label for="exampleFormControlTextarea1"><strong>Enter you essay here</strong></label>
+            <label for="exampleFormControlTextarea1"><strong>Enter your essay here</strong></label>
             <textarea id="student-essay" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             <button id="sub-btn" type="submit" class="btn btn-primary"><strong>Submit</strong></button>
         </form>
@@ -63,12 +63,19 @@
 
 <div id="response" class="problem-box">
     <div>
-        <p class="prob-stmt"><strong>{{context.problem_statement}}</strong></p>
+        <p id="repeated" class="prob-stmt"><strong>{{context.problem_statement}}</strong></p>
     </div>
-</div>
-<div id="agent-response"></div>
-<div id="student-essay">
-
+    <div id="response">
+        <p id="agent-response"></p>
+    </div>
+    <div id="student-essay">
+        <form id="essay-form" class="form-group" type="submit">
+            {%csrf_token%}
+            <label for="exampleFormControlTextarea1"><strong>Enter your essay here</strong></label>
+            <textarea id="student-essay2" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button id="sub-btn" type="submit" class="btn btn-primary"><strong>Submit</strong></button>
+        </form>
+    </div>
 </div>
 
 
@@ -77,14 +84,15 @@
     const studentEssay = document.getElementById("student-essay")
     const essayForm = document.getElementById("essay-form")
     const agentResponse = document.getElementById("agent-response")
-    const submission = document.getElementById("submission")
-    const response = document.getElementById("response")
+    const submissionGroup = document.getElementById("submission")
+    const responseGroup = document.getElementById("response")
 
   
     essayForm.addEventListener('submit',(e) => {
       e.preventDefault()
-      submission.style.display = 'none'
-  
+      submissionGroup.style.display = 'none'
+      document.getElementById("student-essay2").value = studentEssay.value
+    
       const essay = studentEssay.value.trim();
       if (essay.length === 0) {
         return;
@@ -97,14 +105,15 @@
         'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
         'essay': essay
       })
-    })}).then(resp => resp.json())
+    }).then(resp => resp.json())
     .then(data => {
       const response = data.output;
-      console.log(data)
+      console.log(response)
+      agentResponse.innerHTML = `${response}`
 
 
     })
-  
+})
   </script>
 
 {% endblock %}

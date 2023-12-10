@@ -37,3 +37,11 @@ table th {
 label {
     font-size: 1.25remS;
 }
+
+#agent-response {
+    padding: 5vw;
+}
+
+#repeated {
+    font-size: 1rem;
+}
