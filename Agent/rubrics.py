@@ -18,12 +18,12 @@
 # Otherwise student should be given - (0 points)
 # '''
 
-doktor_rubric = '''#Essential Information (0.0 points - 5.0 points): The essay includes all the necessary information required to solve the problem.
-#Physics Concepts (0.0 points - 5.0 points): The essay demonstrates the ability to select appropriate physics concepts and principles to use.
-#Specific Application (0.0 points to 5.0 points):	The essay applies physics to the specific conditions in the problem.
-#Mathematical Procedures (0.0 points - 5.0 points): The essay follows appropriate mathematical rules and procedures during the solution execution.
-#Logical Progression (0.0 points - 5.0 points):	The essay progresses logically, is coherent, focused toward a goal, and consistent.
-#Overall Score (0.0 points - 25.0 points): The overall quality of the essay scored on the dimensions '''
+doktor_rubric = '''#Essential Information (1.0 points - 3.0 points): The essay includes all the necessary information required to solve the problem.
+#Physics Concepts (1.0 points - 3.0 points): The essay demonstrates the ability to select appropriate physics concepts and principles to use.
+#Specific Application (1.0 points to 3.0 points):	The essay applies physics to the specific conditions in the problem.
+#Mathematical Procedures (1.0 points - 3.0 points): The essay follows appropriate mathematical rules and procedures during the solution execution.
+#Logical Progression (1.0 points - 3.0 points):	The essay progresses logically, is coherent, focused toward a goal, and consistent.
+#Overall Score (1.0 points - 3.0 points): The overall quality of the essay scored on the dimensions '''
 
 rubric = doktor_rubric.split("#")[1:]
 rubric_dict = dict(zip([row.split(":")[0].split("(")[0] for row in rubric],[row.split(":")[1].strip() for row in rubric]))
