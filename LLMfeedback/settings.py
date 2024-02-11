@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#!=*ose9qzo@skgm2mkk(n*nvc7o17((#rq!dazrx&grf1_86y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['104.236.7.41']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'LLMfeedback.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'llm_feedback',
+        'USER': 'jeremy',
+        'PASSWORD': '1195Eldorado',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -108,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 

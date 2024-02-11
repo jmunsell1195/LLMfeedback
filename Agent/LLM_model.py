@@ -12,6 +12,8 @@ def test_wrapper(text: str) -> str:
 client = OpenAI()
 
 def gpt_wrapper(prompt:str, system: str = SYSTEM,  return_raw:bool = False, model: str = "gpt-4") -> str:
+  """wrapper function to call OpenAI API"""
+  
   response = client.chat.completions.create(
   model = model,
   messages=[

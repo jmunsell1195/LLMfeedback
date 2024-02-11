@@ -86,17 +86,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#">
-      <img src="{% static 'admin/img/Group 21.png' %}" style="width: 5vw">    
+      <img src="/home/jeremy/LLMfeedback/static/IMG/llm_feedback_logo.jpeg" style="width: 5vw">    
     </a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Chat <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Login</a>
+        <a class="nav-link" href="/Auth/logout">Logout</a>
       </li>
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
@@ -112,7 +109,7 @@
         <li class="message received">
           <div class="message-text">
             <div class="message-sender">
-              <img src="{% static 'admin/img/download.jpeg' %}" style="width: 2.5vw">
+              <!-- <img src="{% static 'IMG/llm_feedback_logo.jpeg' %}" style="width: 2.5vw"> -->
             </div>
             <div class="message-content">
                 {{context.problem_statement}}
@@ -124,7 +121,7 @@
         <li class="message received">
           <div class="message-text">
             <div class="message-sender">
-              <img src="{% static 'admin/img/download.jpeg' %}" style="width: 2.5vw">
+              <!-- <img src="{% static 'IMG/llm_feedback_logo.jpeg' %}" style="width: 2.5vw"> -->
             </div>
             <div class="message-content">
                 Your response will be scored according to the rubric:

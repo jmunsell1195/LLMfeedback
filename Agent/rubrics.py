@@ -23,7 +23,5 @@ doktor_rubric = '''#Essential Information (1.0 points - 3.0 points): The essay i
 #Specific Application (1.0 points to 3.0 points):	The essay applies physics to the specific conditions in the problem.
 #Mathematical Procedures (1.0 points - 3.0 points): The essay follows appropriate mathematical rules and procedures during the solution execution.
 #Logical Progression (1.0 points - 3.0 points):	The essay progresses logically, is coherent, focused toward a goal, and consistent.
-#Overall Score (1.0 points - 3.0 points): The overall quality of the essay scored on the dimensions '''
+#Overall Score (1.0 points - 3.0 points): The overall quality of the essay scored on these dimensions '''
 
-rubric = doktor_rubric.split("#")[1:]
-rubric_dict = dict(zip([row.split(":")[0].split("(")[0] for row in rubric],[row.split(":")[1].strip() for row in rubric]))

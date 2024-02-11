@@ -21,17 +21,3 @@
       </body>
 
 </html>
-
-<div id="bottombar">
-  {% if user.is_authenticated %}
-  <div><button id="logout-button" class="btn" onclick="logout();">Logout</button></div>
-  {% endif %}
-  <div id="cr"><p> &copy Jeremy Munsell 2023 </p></div>
-</div>
-
-<script>
-  const logout = () => {
-    window.location.replace('/Auth/logout')
-  }
-
-</script>
